@@ -63,12 +63,28 @@ def make_patient_file(patients, filename):
     with open(filename, 'w') as outfile:
         # file header
         outfile.write(
-            "Blank,Record Identifier,Patient Status,First Name,Middle Name,Last Name,Name Suffix,Birth Date,Death Date,Mother's First Name,Mother's Maiden Last Name,Mother's HBsAG Status,Sex (Gender),American Indian or Alaska Native,Asian,Native Hawaiian or Other Pacific Islander,Black or African-American,White,Other Race,Ethnicity,Social Security Number,Contact Allowed,Patient ID,Medicaid ID,Responsible Party First Name,Responsible Party Middle Name,Responsible Party Last Name,Responsible Party Relationship,Street Address Line,Other Address Line,PO Box Route Line,City,State,Zip Code,County,Phone,Sending Organization\n")
+            "Blank,Record Identifier,Patient Status,First Name,Middle Name,Last Name,Name Suffix,Birth Date,"
+            "Death Date,Mother's First Name,Mother's Maiden Last Name,Mother's HBsAG Status,Sex (Gender),"
+            "American Indian or Alaska Native,Asian,Native Hawaiian or Other Pacific Islander,"
+            "Black or African-American,White,Other Race,Ethnicity,Social Security Number,Contact Allowed,Patient ID,"
+            "Medicaid ID,Responsible Party First Name,Responsible Party Middle Name,Responsible Party Last Name,"
+            "Responsible Party Relationship,Street Address Line,Other Address Line,PO Box Route Line,City,State,"
+            "Zip Code,County,Phone,Sending Organization\n")
         for patient in patients:
             # all rows start with a blank entry. No idea why. It's in the ALERT iis documentation
             blank = ""
             outfile.write(
-                f"{blank},{patient.get_record()},{patient.get_status()},{patient.get_first()},{patient.get_middle()},{patient.get_last()},{patient.get_suffix()},{patient.get_birth_date()},{patient.get_death_date()},{patient.get_mother_first()},{patient.get_mother_maiden()},{patient.get_mother_HBsAG()},{patient.get_sex()},{patient.get_native_american()},{patient.get_asian()},{patient.get_native_hawaiian()},{patient.get_black()},{patient.get_white()},{patient.get_other()},{patient.get_ethnicity()},{patient.get_ssn()},{patient.get_contact()},{patient.get_patient_id()},{patient.get_medicaid_id()},{patient.get_rp_first()},{patient.get_rp_middle()},{patient.get_rp_last()},{patient.get_rp_relation()},{patient.get_street_address()},{patient.get_other_address()},{patient.get_po_box()},{patient.get_city()},{patient.get_state()},{patient.get_zip()},{patient.get_county()},{patient.get_phone()},{patient.get_sending_org()}\n")
+                f"{blank},{patient.get_record()},{patient.get_status()},{patient.get_first()},{patient.get_middle()},"
+                f"{patient.get_last()},{patient.get_suffix()},{patient.get_birth_date()},{patient.get_death_date()},"
+                f"{patient.get_mother_first()},{patient.get_mother_maiden()},{patient.get_mother_HBsAG()},"
+                f"{patient.get_sex()},{patient.get_native_american()},{patient.get_asian()},"
+                f"{patient.get_native_hawaiian()},{patient.get_black()},{patient.get_white()},"
+                f"{patient.get_other()},{patient.get_ethnicity()},{patient.get_ssn()},{patient.get_contact()},"
+                f"{patient.get_patient_id()},{patient.get_medicaid_id()},{patient.get_rp_first()},"
+                f"{patient.get_rp_middle()},{patient.get_rp_last()},{patient.get_rp_relation()},"
+                f"{patient.get_street_address()},{patient.get_other_address()},{patient.get_po_box()},"
+                f"{patient.get_city()},{patient.get_state()},{patient.get_zip()},{patient.get_county()},"
+                f"{patient.get_phone()},{patient.get_sending_org()}\n")
 
 
 def make_immunization_file(patients, filename):
@@ -81,13 +97,20 @@ def make_immunization_file(patients, filename):
     with open(filename, 'w') as outfile:
         # file header
         outfile.write(
-            "Blank,Record Identifier,NDC Code,Trade Name,CPT Code,CVX Code,Vaccine Group,Vaccination Date,Administration Route Code,Body Site Code,Reaction Code,Manufacturer Code,Immunization Information Source,Lot Number,Provider Name,Administered By Name,Sending Organization,Vaccine Eligibility\n")
+            "Blank,Record Identifier,NDC Code,Trade Name,CPT Code,CVX Code,Vaccine Group,Vaccination Date,"
+            "Administration Route Code,Body Site Code,Reaction Code,Manufacturer Code,Immunization Information "
+            "Source,Lot Number,Provider Name,Administered By Name,Sending Organization,Vaccine Eligibility\n")
         for patient in patients:
             immunization = patient.get_immunization()
             # all rows start with a blank entry. No idea why. It's in the ALERT iis documentation
             blank = ""
             outfile.write(
-                f"{blank},{patient.get_record()},{immunization.get_ndc()},{immunization.get_trade_name()},{immunization.get_cpt()},{immunization.get_cvx()},{immunization.get_vaccine_group()},{immunization.get_vaccination_date()},{immunization.get_route()},{immunization.get_body_site()},{immunization.get_reaction()},{immunization.get_manufacturer_code()},{immunization.get_info_source()},{immunization.get_lot_number()},{immunization.get_provider_name()},{immunization.get_giver()},{immunization.get_sending_org()},{immunization.get_eligibility()}\n")
+                f"{blank},{patient.get_record()},{immunization.get_ndc()},{immunization.get_trade_name()},"
+                f"{immunization.get_cpt()},{immunization.get_cvx()},{immunization.get_vaccine_group()},"
+                f"{immunization.get_vaccination_date()},{immunization.get_route()},{immunization.get_body_site()},"
+                f"{immunization.get_reaction()},{immunization.get_manufacturer_code()},{immunization.get_info_source()},"
+                f"{immunization.get_lot_number()},{immunization.get_provider_name()},{immunization.get_giver()},"
+                f"{immunization.get_sending_org()},{immunization.get_eligibility()}\n")
 
 
 def main():
