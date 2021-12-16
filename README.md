@@ -16,6 +16,10 @@ Make sure you have Python3 installed.  Consult IT if you do not.
 
 Download a patient data csv file from Solv for the desired date range. Save the csv file under data/Solv_data
 
+You'll want to clean this file to ensure data points are spelled properly. Moderna is commonly misspelled.  I don't
+recommend Excel for this, as Excel tends to modify numeric data such as dates into an undesired format. LibreOffice
+works well.  You may also need to find (ctrl + f) and delete any commas.
+
 Example: `data/Solv_data/solv_patient_report[...].csv`
 
 You can rename the file from Solv to whatever you want, but remember the file name.
@@ -39,3 +43,4 @@ Example: `data/Patient/December15_patients.csv`, `data/Immunization/December15_i
 
 You can now use both of these files to Exchange Data with ALERT iis.
 
+![terminal](data/imgs/terminal.png)

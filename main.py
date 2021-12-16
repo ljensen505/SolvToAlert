@@ -57,10 +57,12 @@ def gather_date(data_file):
             if row[lot_index]:
                 immunization = Immunization(row[brand], row[vaccination_date], row[arm], row[lot_index],
                                             row[giver_index])
+
                 if is_maiden_name(header_row):
                     maiden_name = row[mother_maiden_index]
                 else:
                     maiden_name = ""
+
                 patient = Patient(i + 1, row[first_name], middle_name, row[last_name], row[birth_date],
                                   maiden_name, row[sex_index], row[race], row[ethnicity_index], immunization)
                 patient.set_race_info()
@@ -108,7 +110,7 @@ def make_immunization_file(patients, filename):
     Makes a csv file of immunization info
     :param patients:
     :param filename:
-    :return:
+    :return: nothing
     """
     with open(filename, 'w') as outfile:
         # file header

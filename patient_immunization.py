@@ -19,7 +19,7 @@ def get_solv_file():
         solv_file = input("What is the name of the Solv csv file: ")
         solv_file = f"data/Solv_data/{solv_file}"
         try:
-            with open(solv_file, 'r') as test_file:
+            with open(solv_file, 'r') as _:
                 return solv_file
         except FileNotFoundError:
             print("ERROR: file not found. Is it in the data/Solv_data folder?  Spelling?")
@@ -44,6 +44,7 @@ def format_date(date):
         new_list.append(date[1])
         new_list.append(date[2])
         new_list.append(date[3])
+
     else:
         for char in date:
             if char != '/':
@@ -70,7 +71,7 @@ def format_body_site(arm_str):
 
 def format_sex(sex):
     """
-    Reformats a patient's gender to match ALERT iis guidelines
+    Formats a patient's gender to match ALERT iis guidelines
     :param sex: "Male" or "Female"
     :return: "M" or "F"
     """
@@ -84,7 +85,7 @@ def format_sex(sex):
 
 def format_ethnicity(ethnicity):
     """
-    Reformats a patient's ethnicity to match ALERT iis guidelines
+    Formats a patient's ethnicity to match ALERT iis guidelines
     :param ethnicity: a string of ethnicity
     :return: "NH" or "H"
     """
@@ -385,3 +386,7 @@ class Immunization:
 
     def get_eligibility(self):
         return self._eligibility
+
+
+if __name__ == "__main__":
+    print(format_date("4/2/1951"))
