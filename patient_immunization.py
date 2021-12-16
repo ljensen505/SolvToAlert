@@ -1,8 +1,29 @@
 """
 Lucas Jensen
 Patient class and Immunization class for main.py of the Solv -> ALERT program
-Last updated: 12/15/2021
+Last updated: 12/16/2021
 """
+
+
+def get_batch_name():
+    while True:
+        batch = input("Batch name: ")
+        if " " in batch or "." in batch:
+            print("ERROR: don't use a space or period.")
+        else:
+            return batch
+
+
+def get_solv_file():
+    while True:
+        solv_file = input("What is the name of the Solv csv file: ")
+        solv_file = f"data/Solv_data/{solv_file}"
+        try:
+            with open(solv_file, 'r') as test_file:
+                return solv_file
+        except FileNotFoundError:
+            print("ERROR: file not found. Is it in the data/Solv_data folder?  Spelling?")
+            continue
 
 
 def format_date(date):

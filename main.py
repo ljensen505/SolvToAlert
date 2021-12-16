@@ -1,15 +1,14 @@
 """
 Written by Lucas Jensen for White Bird Clinic
 The main program for transferring data between Solv and ALERT iis
-Last updated: 12/15/2021
+Last updated: 12/16/2021
 """
 
 import csv
-from patient_immunization import Patient, Immunization
+from patient_immunization import Patient, Immunization, get_batch_name, get_solv_file
 
-batch = input("Batch name: ")
-solv_file = input("What is the name of the Solv csv file: ")
-solv_file = f"data/Solv_data/{solv_file}"
+batch = get_batch_name()
+solv_file = get_solv_file()
 patient_file = f"data/Patient/{batch}_patients.csv"
 immunization_file = f"data/Immunization/{batch}_immunizations.csv"
 
