@@ -1,7 +1,7 @@
 """
 Written by Lucas Jensen for White Bird Clinic
 The main program for transferring data between Solv and ALERT iis
-Last updated: 12/16/2021
+Last updated: 12/28/2021
 """
 
 import csv
@@ -102,7 +102,7 @@ def make_patient_file(patients, filename):
                 f"{patient.get_rp_middle()},{patient.get_rp_last()},{patient.get_rp_relation()},"
                 f"{patient.get_street_address()},{patient.get_other_address()},{patient.get_po_box()},"
                 f"{patient.get_city()},{patient.get_state()},{patient.get_zip()},{patient.get_county()},"
-                f"{patient.get_phone()},{patient.get_sending_org()}\n")
+                f"{patient.get_phone()},\n")
 
 
 def make_immunization_file(patients, filename):
@@ -123,12 +123,12 @@ def make_immunization_file(patients, filename):
             # all rows start with a blank entry. No idea why. It's in the ALERT iis documentation
             blank = ""
             outfile.write(
-                f"{blank},{patient.get_record()},{immunization.get_ndc()},{immunization.get_trade_name()},"
-                f"{immunization.get_cpt()},{immunization.get_cvx()},{immunization.get_vaccine_group()},"
+                # some of these attributes are empty cells because ALERT only requires one vax identifier
+                f"{blank},{patient.get_record()},,,,{immunization.get_cvx()},{immunization.get_vaccine_group()},"
                 f"{immunization.get_vaccination_date()},{immunization.get_route()},{immunization.get_body_site()},"
                 f"{immunization.get_reaction()},{immunization.get_manufacturer_code()},"
                 f"{immunization.get_info_source()},{immunization.get_lot_number()},{immunization.get_provider_name()},"
-                f"{immunization.get_giver()},{immunization.get_sending_org()},{immunization.get_eligibility()}\n")
+                f"{immunization.get_giver()},,{immunization.get_eligibility()}\n")
 
 
 def main():

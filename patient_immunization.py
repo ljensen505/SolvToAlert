@@ -1,7 +1,7 @@
 """
 Lucas Jensen
 Patient class and Immunization class for main.py of the Solv -> ALERT program
-Last updated: 12/16/2021
+Last updated: 12/28/2021
 """
 
 
@@ -289,7 +289,8 @@ class Immunization:
         self._sending_org = "AL3080"
         self._eligibility = "O"  # "O" is the code for "Other State Supplied"
 
-    def _set_ndc(self, manufacturer):
+    @staticmethod
+    def _set_ndc(manufacturer):
         manu = manufacturer.lower()
         if manu == "moderna":
             return "80777-0273-10"
@@ -301,7 +302,8 @@ class Immunization:
             print("ERROR: check manufacturer column")
             return False
 
-    def _set_cpt(self, manufacturer):
+    @staticmethod
+    def _set_cpt(manufacturer):
         manu = manufacturer.lower()
         if manu == "moderna":
             return "91301"
@@ -313,7 +315,8 @@ class Immunization:
             print("ERROR: check manufacturer column (cpt)")
             return False
 
-    def _set_trade_name(self, manufacturer):
+    @staticmethod
+    def _set_trade_name(manufacturer):
         manu = manufacturer.lower()
         if manu == "moderna":
             return "Moderna COVID-19 Vaccine"
@@ -326,7 +329,8 @@ class Immunization:
             print(manu)
             return False
 
-    def _set_cvx(self, manufacturer):
+    @staticmethod
+    def _set_cvx(manufacturer):
         manu = manufacturer.lower()
         if manu == "moderna":
             return "207"
